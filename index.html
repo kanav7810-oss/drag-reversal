@@ -625,9 +625,42 @@
   Any claim intended for defence filters on <em>high confidence only</em>.</p>
 </section>
 
+<!-- ================= RANKING ================= -->
+<section id="ranking">
+  <div class="sec-head"><span class="sec-no">Section V</span><h2>Overall ranking</h2></div>
+  <p class="sec-sub">The ten strongest cases in the study, net total-drag
+  reduction against the smooth baseline. That the entire top ten is
+  <em>sphere cases at 50 m/s</em> is Finding 1 stated as data: pressure drag
+  is where the big wins live.</p>
+
+  <table>
+    <thead><tr>
+      <th>#</th><th>Geometry</th><th>Class</th><th>Body</th><th class="num">Speed</th><th class="num">Net DR</th><th class="num">Uncertainty</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>1</td><td>B-HEX-d2.0-r0.1</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.77%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>2</td><td>B-HEX-d1.0-r0.2</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.76%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>3</td><td>D-HY-05</td><td>Hybrid</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.59%</td><td class="num">&plusmn; 5.6 pp</td></tr>
+      <tr><td>4</td><td>B-HEX-d0.5-r0.3</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.35%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>5</td><td>B-HEX-d5.0-r0.05</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.25%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>6</td><td>D-HY-10</td><td>Hybrid</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.22%</td><td class="num">&plusmn; 5.6 pp</td></tr>
+      <tr><td>7</td><td>B-HEXA-c80</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+52.14%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>8</td><td>B-HEX-d1.0-r0.3</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+51.36%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>9</td><td>B-STAG-c60</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+51.13%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+      <tr><td>10</td><td>B-HEX-d2.0-r0.2</td><td>Dimple</td><td>Sphere</td><td class="num">50 m/s</td><td class="num">+49.25%</td><td class="num">&plusmn; 4.1 pp</td></tr>
+    </tbody>
+  </table>
+  <p class="table-note">The best plate geometry, blade riblets
+  <em>A-BLAD-s200-h100</em> at 20 m/s, reaches +9.51 &plusmn; 1.5 percent, and
+  on a friction-dominated body that is the number to beat. Cases whose
+  uncertainty intervals overlap are <em>statistical ties</em>, so ranks 1
+  through 9 should be read as one leading group rather than ten separate
+  winners.</p>
+</section>
+
 <!-- ================= METHODOLOGY ================= -->
 <section id="tools">
-  <div class="sec-head"><span class="sec-no">Section V</span><h2>Methodology</h2></div>
+  <div class="sec-head"><span class="sec-no">Section VI</span><h2>Methodology</h2></div>
   <p class="sec-sub">The study is complete as a computational body of work: a
   closed-form model, an independent validation harness, and a fully specified
   experimental programme whose predictions were <em>registered before any
@@ -668,6 +701,33 @@
     single measurement was taken.&rdquo;
     <div class="quote-rule"></div>
   </blockquote>
+</section>
+
+<!-- ================= DATA ================= -->
+<section id="data">
+  <div class="sec-head"><span class="sec-no">Section VII</span><h2>Data and paper</h2></div>
+  <p class="sec-sub">Everything behind this page is open: the full manuscript,
+  the raw dataset, the benchmark record and the analysis outputs are all in
+  this deployment and on <a href="https://github.com/kanav7810-oss/drag-reversal" style="color:var(--gold)">GitHub</a>.</p>
+
+  <div class="tools">
+    <div class="tool">
+      <h4><span>Manuscript</span><a href="research_paper.md" style="color:inherit">Full research paper</a></h4>
+      <p style="color:var(--ink-dim);font-size:15px">Eleven sections, 41 DOI-verified citations, all equations and the complete limitations discussion.</p>
+    </div>
+    <div class="tool">
+      <h4><span>Dataset</span><a href="dataset.csv" style="color:inherit">dataset.csv</a></h4>
+      <p style="color:var(--ink-dim);font-size:15px">670 rows by 33 columns. One row per geometry, speed and body, with the response variable DR_net_pct.</p>
+    </div>
+    <div class="tool">
+      <h4><span>Validation</span><a href="validation_benchmarks.csv" style="color:inherit">Benchmark record</a></h4>
+      <p style="color:var(--ink-dim);font-size:15px">Thirteen published benchmarks with kind, status and pass flags. The three emergent rows are the independent evidence.</p>
+    </div>
+    <div class="tool">
+      <h4><span>Analysis</span><a href="results_summary.json" style="color:inherit">results_summary.json</a></h4>
+      <p style="color:var(--ink-dim);font-size:15px">The complete machine-readable analysis tree behind every number on this page.</p>
+    </div>
+  </div>
 </section>
 
 </main>
