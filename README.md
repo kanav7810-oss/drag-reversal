@@ -57,7 +57,6 @@ DOI-verified citations) and [handoff.md](handoff.md).
 
 ```
 index.html                interactive research overview (live at the link above)
-explorer.html             self-contained drag explorer with embedded dataset
 research_paper.md         full manuscript
 dataset.csv               670 rows x 33 columns, primary data
 results_summary.json      regenerated analysis tree
