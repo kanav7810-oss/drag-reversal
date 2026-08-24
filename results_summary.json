@@ -1,0 +1,632 @@
+{
+ "meta": {
+  "n_rows": 670,
+  "n_geometries": 67,
+  "n_columns": 33,
+  "class_counts": {
+   "riblet": 21,
+   "dimple": 20,
+   "shark": 15,
+   "hybrid": 10,
+   "baseline": 1
+  },
+  "speeds": [
+   1.0,
+   5.0,
+   10.0,
+   20.0,
+   50.0
+  ],
+  "bodies": [
+   "plate",
+   "sphere"
+  ],
+  "L_plate_m": 0.1,
+  "D_sphere_m": 0.0427,
+  "rho": 1.184,
+  "mu": 1.849e-05,
+  "nu": 1.5616554054054054e-05,
+  "Re_transition_smooth": 500000.0,
+  "confidence_counts": {
+   "high": 256,
+   "low": 214,
+   "moderate": 200
+  }
+ },
+ "validation": {
+  "n_pass": 13,
+  "rows": [
+   {
+    "benchmark": "Smooth plate C_F at Re_L=1e6",
+    "source": "Schlichting",
+    "kind": "POINT",
+    "status": "IMPLEMENTATION",
+    "published": "0.0045",
+    "predicted": 0.00447,
+    "units": "-",
+    "error_pct": -0.65,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Smooth plate C_F at Re_L=1e7",
+    "source": "Schlichting",
+    "kind": "POINT",
+    "status": "IMPLEMENTATION",
+    "published": "0.003",
+    "predicted": 0.003,
+    "units": "-",
+    "error_pct": 0.12,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Smooth sphere Cd at Re_D=1e5",
+    "source": "Clift-Gauvin",
+    "kind": "POINT",
+    "status": "IMPLEMENTATION",
+    "published": "0.5",
+    "predicted": 0.49175,
+    "units": "-",
+    "error_pct": -1.65,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Blade riblet peak DR",
+    "source": "Bechert et al. 1997",
+    "kind": "POINT",
+    "status": "CALIBRATED",
+    "published": "9.9",
+    "predicted": 9.9,
+    "units": "%",
+    "error_pct": -0.0,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Blade riblet optimal s+",
+    "source": "Garcia-Mayoral & Jimenez",
+    "kind": "BAND",
+    "status": "EMERGENT",
+    "published": "(13, 20)",
+    "predicted": 15.52519,
+    "units": "-",
+    "error_pct": NaN,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Blade riblet DR->0 crossing s+",
+    "source": "literature band",
+    "kind": "BAND",
+    "status": "EMERGENT",
+    "published": "(25, 40)",
+    "predicted": 31.05038,
+    "units": "-",
+    "error_pct": NaN,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "V-groove peak DR",
+    "source": "Bechert et al. 1997",
+    "kind": "POINT",
+    "status": "CALIBRATED",
+    "published": "6.1",
+    "predicted": 6.2,
+    "units": "%",
+    "error_pct": 1.64,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "V-groove optimal s+",
+    "source": "literature band",
+    "kind": "BAND",
+    "status": "EMERGENT",
+    "published": "(10, 20)",
+    "predicted": 18.0863,
+    "units": "-",
+    "error_pct": NaN,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Optimal l_g+ collapse across 4 shapes",
+    "source": "GM&J",
+    "kind": "POINT",
+    "status": "CALIBRATED",
+    "published": "10.7",
+    "predicted": 10.701,
+    "units": "-",
+    "error_pct": 0.01,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Golf ball Cd at Re_D=1e5",
+    "source": "Achenbach / golf-ball data",
+    "kind": "POINT",
+    "status": "CALIBRATED",
+    "published": "0.25",
+    "predicted": 0.26864,
+    "units": "-",
+    "error_pct": 7.45,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Golf ball critical Re_D",
+    "source": "Achenbach-type",
+    "kind": "BAND",
+    "status": "CALIBRATED",
+    "published": "(40000, 80000)",
+    "predicted": 62865.49327,
+    "units": "-",
+    "error_pct": NaN,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Best plate dimple net DR",
+    "source": "conservative consensus",
+    "kind": "BAND",
+    "status": "CALIBRATED",
+    "published": "(-2, 4)",
+    "predicted": 0.8815,
+    "units": "%",
+    "error_pct": NaN,
+    "passed": "PASS"
+   },
+   {
+    "benchmark": "Shark-skin peak DR",
+    "source": "conservative calibration",
+    "kind": "BAND",
+    "status": "CALIBRATED",
+    "published": "(2.5, 10)",
+    "predicted": 2.97965,
+    "units": "%",
+    "error_pct": NaN,
+    "passed": "PASS"
+   }
+  ]
+ },
+ "headline": {
+  "best_plate": {
+   "geometry_id": "A-BLAD-s200-h100",
+   "U_inf_mps": 20.0,
+   "DR_net_pct": 9.506,
+   "uncertainty_pp": 1.5,
+   "s_plus": 14.907
+  },
+  "best_sphere": {
+   "geometry_id": "B-HEX-d2.0-r0.1",
+   "U_inf_mps": 50.0,
+   "DR_net_pct": 52.768,
+   "uncertainty_pp": 4.1,
+   "Cd_smooth": 0.4903,
+   "Cd_textured": 0.2316
+  },
+  "class_means": {
+   "baseline/plate": 0.0,
+   "baseline/sphere": 0.0,
+   "dimple/plate": -6.253,
+   "dimple/sphere": 7.9548,
+   "hybrid/plate": -0.899,
+   "hybrid/sphere": 7.0145,
+   "riblet/plate": 1.0909,
+   "riblet/sphere": 1.7185,
+   "shark/plate": -0.096,
+   "shark/sphere": 2.2475
+  },
+  "ratio_best_sphere_to_plate": 5.55
+ },
+ "a1_ranking": {
+  "top": [
+   {
+    "geometry_id": "B-HEX-d2.0-r0.1",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.768469,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d1.0-r0.2",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.756469,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "D-HY-05",
+    "geometry_class": "hybrid",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.593248,
+    "DR_uncertainty_pp": 5.6
+   },
+   {
+    "geometry_id": "B-HEX-d0.5-r0.3",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.352123,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d5.0-r0.05",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.25157,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "D-HY-10",
+    "geometry_class": "hybrid",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.219695,
+    "DR_uncertainty_pp": 5.6
+   },
+   {
+    "geometry_id": "B-HEXA-c80",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 52.140089,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d1.0-r0.3",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 51.361847,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-STAG-c60",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 51.1252,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d2.0-r0.2",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 49.251301,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d2.0-r0.05",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 48.734515,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-SQUA-c40",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 48.728972,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d1.0-r0.1",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 48.716523,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "B-HEX-d0.5-r0.2",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 48.700124,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "D-HY-04",
+    "geometry_class": "hybrid",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 47.154764,
+    "DR_uncertainty_pp": 5.6
+   },
+   {
+    "geometry_id": "D-HY-02",
+    "geometry_class": "hybrid",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 47.058517,
+    "DR_uncertainty_pp": 5.6
+   },
+   {
+    "geometry_id": "B-HEX-d5.0-r0.1",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 46.962599,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "D-HY-06",
+    "geometry_class": "hybrid",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 45.697856,
+    "DR_uncertainty_pp": 5.6
+   },
+   {
+    "geometry_id": "B-HEX-d2.0-r0.3",
+    "geometry_class": "dimple",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 44.601904,
+    "DR_uncertainty_pp": 4.1
+   },
+   {
+    "geometry_id": "C-SK-s500-o40",
+    "geometry_class": "shark",
+    "body": "sphere",
+    "U_inf_mps": 50.0,
+    "DR_net_pct": 41.601934,
+    "DR_uncertainty_pp": 3.6
+   }
+  ]
+ },
+ "a2_regime": {
+  "plate": {
+   "riblet": 1.0909,
+   "baseline": 0.0,
+   "shark": -0.096,
+   "hybrid": -0.899,
+   "dimple": -6.253
+  },
+  "sphere": {
+   "dimple": 7.9548,
+   "hybrid": 7.0145,
+   "shark": 2.2475,
+   "riblet": 1.7185,
+   "baseline": 0.0
+  }
+ },
+ "a3_riblet": {
+  "best_plate": {
+   "geometry_id": "A-BLAD-s200-h100",
+   "U_inf_mps": 20.0,
+   "DR_net_pct": 9.506,
+   "s_plus": 14.907
+  },
+  "shape_optima": {
+   "blade": {
+    "peak_DR_pct": 9.506,
+    "at_U": 20.0,
+    "s_plus": 14.907,
+    "lg_plus": 10.2738
+   },
+   "scalloped": {
+    "peak_DR_pct": 5.152,
+    "at_U": 50.0,
+    "s_plus": 16.915,
+    "lg_plus": 9.2645
+   },
+   "u-groove": {
+    "peak_DR_pct": 4.596,
+    "at_U": 50.0,
+    "s_plus": 16.915,
+    "lg_plus": 9.768
+   },
+   "v-groove": {
+    "peak_DR_pct": 36.098,
+    "at_U": 50.0,
+    "s_plus": 9.25,
+    "lg_plus": 14.6261
+   }
+  },
+  "band_value_pp": 2.5486,
+  "n_inside_band": 16,
+  "mean_inside": 3.3808,
+  "mean_outside": 0.8322
+ },
+ "a4_dimple": {
+  "best_plate": {
+   "geometry_id": "B-HEXA-c80",
+   "DR_net_pct": 1.354
+  },
+  "best_sphere": {
+   "geometry_id": "B-HEX-d2.0-r0.1",
+   "U_inf_mps": 50.0,
+   "DR_net_pct": 52.768,
+   "Cd_smooth": 0.4903,
+   "Cd_textured": 0.2316
+  },
+  "plate_class_mean": -6.253,
+  "sphere_class_mean": 7.9548
+ },
+ "a5_shark": {
+  "best": {
+   "geometry_id": "C-SK-s500-o40",
+   "U_inf_mps": 50.0,
+   "body": "sphere",
+   "DR_net_pct": 41.602
+  },
+  "shortfall_vs_ideal_riblet_pp": -5.504,
+  "fraction_of_riblet_benefit": 1.152
+ },
+ "a6_hybrid": {
+  "cases": 100,
+  "mean_hybrid_DR": 3.0577,
+  "interference_model": "strong + 0.3*weak - 1.5*coverage - dimple penalty",
+  "confidence": "extrapolation - no peer-reviewed calibration data"
+ },
+ "a7_speed": {
+  "1.0": {
+   "best_geometry": "A-V-s500-h250",
+   "body": "plate",
+   "DR_net_pct": 0.722
+  },
+  "5.0": {
+   "best_geometry": "A-V-s500-h250",
+   "body": "plate",
+   "DR_net_pct": 2.905
+  },
+  "10.0": {
+   "best_geometry": "A-V-s500-h250",
+   "body": "plate",
+   "DR_net_pct": 5.344
+  },
+  "20.0": {
+   "best_geometry": "B-HEX-d5.0-r0.2",
+   "body": "sphere",
+   "DR_net_pct": 29.256
+  },
+  "50.0": {
+   "best_geometry": "B-HEX-d2.0-r0.1",
+   "body": "sphere",
+   "DR_net_pct": 52.768
+  }
+ },
+ "a8_pareto": {
+  "pareto_front_drag_vs_feature_size": [
+   {
+    "geometry_id": "C-SK-s50-o40",
+    "DR_max_pct": -0.006,
+    "min_feature_um": 16.666667
+   },
+   {
+    "geometry_id": "A-SCAL-s50-h25",
+    "DR_max_pct": 2.576,
+    "min_feature_um": 25.0
+   },
+   {
+    "geometry_id": "D-HY-08",
+    "DR_max_pct": 4.316,
+    "min_feature_um": 25.0
+   },
+   {
+    "geometry_id": "D-HY-03",
+    "DR_max_pct": 9.135,
+    "min_feature_um": 50.0
+   },
+   {
+    "geometry_id": "A-BLAD-s100-h50",
+    "DR_max_pct": 9.471,
+    "min_feature_um": 50.0
+   },
+   {
+    "geometry_id": "A-BLAD-s200-h100",
+    "DR_max_pct": 9.506,
+    "min_feature_um": 100.0
+   }
+  ]
+ },
+ "a9_stats": [
+  {
+   "geometry_class": "baseline",
+   "body": "plate",
+   "mean": 0.0,
+   "sd": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "n": 5
+  },
+  {
+   "geometry_class": "baseline",
+   "body": "sphere",
+   "mean": 0.0,
+   "sd": 0.0,
+   "min": 0.0,
+   "max": 0.0,
+   "n": 5
+  },
+  {
+   "geometry_class": "dimple",
+   "body": "plate",
+   "mean": -6.253,
+   "sd": 7.7132,
+   "min": -20.16,
+   "max": 1.3543,
+   "n": 100
+  },
+  {
+   "geometry_class": "dimple",
+   "body": "sphere",
+   "mean": 7.9548,
+   "sd": 19.9858,
+   "min": -22.8329,
+   "max": 52.7685,
+   "n": 100
+  },
+  {
+   "geometry_class": "hybrid",
+   "body": "plate",
+   "mean": -0.899,
+   "sd": 5.1198,
+   "min": -19.5834,
+   "max": 9.1354,
+   "n": 50
+  },
+  {
+   "geometry_class": "hybrid",
+   "body": "sphere",
+   "mean": 7.0145,
+   "sd": 18.2209,
+   "min": -16.781,
+   "max": 52.5932,
+   "n": 50
+  },
+  {
+   "geometry_class": "riblet",
+   "body": "plate",
+   "mean": 1.0909,
+   "sd": 2.6387,
+   "min": -17.5056,
+   "max": 9.5056,
+   "n": 105
+  },
+  {
+   "geometry_class": "riblet",
+   "body": "sphere",
+   "mean": 1.7185,
+   "sd": 7.0995,
+   "min": -0.9021,
+   "max": 36.0984,
+   "n": 105
+  },
+  {
+   "geometry_class": "shark",
+   "body": "plate",
+   "mean": -0.096,
+   "sd": 0.6471,
+   "min": -0.7878,
+   "max": 2.0332,
+   "n": 75
+  },
+  {
+   "geometry_class": "shark",
+   "body": "sphere",
+   "mean": 2.2475,
+   "sd": 8.6059,
+   "min": -1.1031,
+   "max": 41.6019,
+   "n": 75
+  }
+ ],
+ "derived": {
+  "plate": {
+   "rows": 335.0,
+   "positive": 160.0,
+   "dr_min": -20.15997,
+   "dr_max": 9.505631,
+   "fraction_positive": 0.4776
+  },
+  "sphere": {
+   "rows": 335.0,
+   "positive": 90.0,
+   "dr_min": -22.832855,
+   "dr_max": 52.768469,
+   "fraction_positive": 0.2687
+  }
+ }
+}
