@@ -336,6 +336,33 @@
     *{animation:none!important;transition:none!important}
   }
 
+  /* ---------- lightbox ---------- */
+  .frame img{cursor:zoom-in}
+  .lightbox{
+    position:fixed;inset:0;z-index:100;
+    display:none;align-items:center;justify-content:center;
+    background:rgba(38,41,24,.96);
+    padding:36px;
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{
+    max-width:92vw;max-height:88vh;width:auto;height:auto;
+    border-radius:16px;
+    box-shadow:0 24px 80px rgba(0,0,0,.5);
+  }
+  .lightbox-close{
+    position:fixed;top:22px;right:26px;
+    width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--hairline);
+    background:var(--bg-raised);
+    color:var(--ink);font-size:22px;line-height:1;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-family:inherit;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .lightbox-close:hover{border-color:#D4DE95;transform:rotate(90deg)}
+  body.lightbox-open{overflow:hidden}
+
   /* ---------- responsive ---------- */
   @media(max-width:980px){
     .hero{grid-template-columns:1fr;gap:52px}
@@ -775,6 +802,34 @@
     </div>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var img = document.getElementById('lightboxImg');
+  function open(src, alt){
+    img.src = src; img.alt = alt || '';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    document.body.classList.add('lightbox-open');
+  }
+  function close(){
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lightbox-open');
+    setTimeout(function(){ img.src=''; }, 250);
+  }
+  document.querySelectorAll('.frame img').forEach(function(el){
+    el.addEventListener('click', function(){ open(el.src, el.alt); });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
 
 </body>
 </html>
