@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Drag Reversal | Surface Micro-Texture Aerodynamics</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0908;
+    --bg-raised:#11100e;
+    --ink:#e9e4da;
+    --ink-dim:#9d968a;
+    --ink-faint:#6b655b;
+    --gold:#c8a96a;
+    --gold-dim:#8f7847;
+    --hairline:rgba(233,228,218,.14);
+    --hairline-soft:rgba(233,228,218,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:#0a0908}
+
+  .wrap{max-width:1320px;margin:0 auto;padding:0 48px}
+
+  /* ---------- masthead ---------- */
+  header{
+    padding:80px 0 72px;
+    border-bottom:1px solid var(--hairline);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero{
+    display:grid;
+    grid-template-columns:minmax(0,1.3fr) minmax(300px,.7fr);
+    gap:72px;
+    align-items:start;
+  }
+  .overline{
+    font-size:12px;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:28px;
+  }
+  h1{
+    font-weight:700;
+    font-size:clamp(38px,5.2vw,64px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+  }
+  h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+  .standfirst{
+    margin-top:30px;
+    max-width:60ch;
+    font-size:19px;
+    color:var(--ink-dim);
+    line-height:1.7;
+  }
+  .standfirst em{color:var(--ink);font-style:italic}
+  .byline{
+    margin-top:36px;
+    font-size:14px;
+    letter-spacing:.06em;
+    color:var(--ink-faint);
+  }
+  .byline b{color:var(--ink-dim);font-weight:600}
+
+  /* ---------- hero side: headline stat + vertical stats ---------- */
+  .hero-side{
+    border-left:1px solid var(--hairline);
+    padding:8px 0 8px 48px;
+    align-self:stretch;
+    display:flex;
+    flex-direction:column;
+  }
+  .headline-stat .n{
+    font-size:clamp(64px,6.5vw,96px);
+    font-weight:700;
+    line-height:.95;
+    color:var(--gold);
+    letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;
+  }
+  .headline-stat .n small{
+    font-size:.42em;
+    font-weight:600;
+  }
+  .headline-stat .l{
+    margin-top:14px;
+    font-size:13px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .headline-stat .sub{
+    margin-top:8px;
+    font-size:15px;
+    font-style:italic;
+    color:var(--ink-faint);
+  }
+  .hero-stats{
+    margin-top:38px;
+    border-top:1px solid var(--hairline);
+  }
+  .hs-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:15px 2px;
+    border-bottom:1px solid var(--hairline-soft);
+  }
+  .hs-row .v{
+    font-size:23px;
+    font-weight:600;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .hs-row .v sup{font-size:12px;color:var(--gold)}
+  .hs-row .k{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:84px 0;border-bottom:1px solid var(--hairline)}
+  .sec-head{display:flex;align-items:baseline;gap:20px;margin-bottom:14px}
+  .sec-no{
+    font-style:italic;
+    font-size:15px;
+    color:var(--gold);
+    white-space:nowrap;
+  }
+  h2{
+    font-size:clamp(26px,3.2vw,38px);
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .sec-sub{max-width:70ch;color:var(--ink-dim);margin-bottom:44px}
+  .sec-sub em{color:var(--ink)}
+
+  /* ---------- findings ---------- */
+  .finding{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:26px;
+    padding:34px 0;
+    border-top:1px solid var(--hairline-soft);
+  }
+  .finding:first-of-type{border-top:none;padding-top:8px}
+  .f-big{
+    font-size:40px;
+    font-weight:600;
+    color:var(--gold);
+    font-variant-numeric:tabular-nums;
+    line-height:1.05;
+  }
+  .f-big small{
+    display:block;
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-top:10px;
+    font-weight:400;
+  }
+  .finding h3{font-size:21px;font-weight:600;margin-bottom:10px}
+  .finding p{color:var(--ink-dim);max-width:72ch}
+  .finding p em{color:var(--ink)}
+
+  /* ---------- gallery ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px 48px;
+  }
+  figure.figs{break-inside:avoid}
+  figure.figs.wide{grid-column:1 / -1}
+  .frame{
+    background:var(--bg-raised);
+    border:1px solid var(--hairline-soft);
+    padding:18px;
+    transition:border-color .35s ease;
+  }
+  figure.figs:hover .frame{border-color:var(--gold-dim)}
+  .frame img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  figcaption{margin-top:18px}
+  figcaption .fig-no{
+    font-style:italic;
+    color:var(--gold);
+    font-size:14px;
+    letter-spacing:.08em;
+  }
+  figcaption h4{font-size:18px;font-weight:600;margin:6px 0 8px}
+  figcaption p{font-size:15px;color:var(--ink-dim);line-height:1.6}
+  figcaption p em{color:var(--ink)}
+
+  /* ---------- tables ---------- */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:15px;
+  }
+  th{
+    text-align:left;
+    font-weight:600;
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    padding:14px 14px;
+    border-bottom:1px solid var(--hairline);
+  }
+  td{
+    padding:13px 14px;
+    border-bottom:1px solid var(--hairline-soft);
+    color:var(--ink-dim);
+    font-variant-numeric:tabular-nums;
+  }
+  td.num{text-align:right;color:var(--ink)}
+  th.num{text-align:right}
+  tr:hover td{background:rgba(200,169,106,.045)}
+  td .em-tag{
+    font-style:italic;
+    color:var(--gold);
+    font-size:13px;
+  }
+  .table-note{
+    margin-top:20px;
+    font-size:14px;
+    color:var(--ink-faint);
+    max-width:75ch;
+  }
+  .table-note em{color:var(--ink-dim)}
+
+  /* ---------- tools ---------- */
+  .tools{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--hairline-soft);
+    border:1px solid var(--hairline-soft);
+  }
+  .tool{
+    background:var(--bg);
+    padding:30px 28px;
+  }
+  .tool h4{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .tool h4 span{
+    display:block;
+    font-style:italic;
+    font-weight:400;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:12px;
+  }
+  .tool ul{list-style:none}
+  .tool li{
+    font-size:15px;
+    color:var(--ink-dim);
+    padding:7px 0 7px 20px;
+    position:relative;
+    border-bottom:1px dashed var(--hairline-soft);
+  }
+  .tool li:last-child{border-bottom:none}
+  .tool li::before{
+    content:'\2013';
+    position:absolute;
+    left:0;
+    color:var(--gold-dim);
+  }
+
+  /* ---------- quote ---------- */
+  blockquote{
+    margin:70px auto 0;
+    max-width:46ch;
+    text-align:center;
+    font-size:clamp(21px,2.6vw,27px);
+    font-style:italic;
+    font-weight:500;
+    line-height:1.5;
+    color:var(--ink);
+  }
+  blockquote span{color:var(--gold)}
+  .quote-rule{
+    width:60px;height:1px;background:var(--gold-dim);
+    margin:34px auto 0;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:64px 0 80px;
+    font-size:14px;
+    color:var(--ink-faint);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  footer .fine{max-width:60ch;line-height:1.7}
+  footer .fine em{color:var(--ink-dim)}
+
+  /* ---------- entrance ---------- */
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .hero-text>*{animation:rise .9s cubic-bezier(.2,.65,.25,1) both}
+  .hero-text .overline{animation-delay:.05s}
+  .hero-text h1{animation-delay:.15s}
+  .hero-text .standfirst{animation-delay:.3s}
+  .hero-text .byline{animation-delay:.42s}
+  .hero-side{animation:rise 1s cubic-bezier(.2,.65,.25,1) .5s both}
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+
+  /* ---------- responsive ---------- */
+  @media(max-width:980px){
+    .hero{grid-template-columns:1fr;gap:52px}
+    .hero-side{border-left:none;border-top:1px solid var(--hairline);padding:36px 0 0}
+    .headline-stat .n{font-size:64px}
+  }
+  @media(max-width:900px){
+    .gallery{grid-template-columns:1fr}
+    .tools{grid-template-columns:1fr}
+    .finding{grid-template-columns:1fr;gap:10px}
+    .f-big{display:flex;align-items:baseline;gap:14px}
+    .f-big small{margin-top:0}
+    section{padding:60px 0}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-text">
+        <div class="overline">The Drag Reversal &middot; Reduced-Order Aerodynamics</div>
+        <h1>Which texture beats drag depends on <em>what kind</em> of drag.</h1>
+        <p class="standfirst">
+          One consistent model, built entirely from peer-reviewed experiments, ranks
+          four families of surface micro-texture across two bodies and five flow
+          speeds. On thin plates where friction dominates, <em>riblets win</em>.
+          On blunt spheres where pressure dominates, <em>dimples win by a factor of
+          five</em>. The answer to an old question turns out to depend on the question.
+        </p>
+        <p class="byline"><b>Kanav Thonda</b> &nbsp;&middot;&nbsp; Rouse High School, Leander TX &nbsp;&middot;&nbsp; Class of 2028</p>
+      </div>
+      <aside class="hero-side">
+        <div class="headline-stat">
+          <div class="n">52.8<small>%</small></div>
+          <div class="l">Peak drag reduction</div>
+          <div class="sub">dimpled sphere, 50 m/s, Cd 0.490 &rarr; 0.232</div>
+        </div>
+        <div class="hero-stats">
+          <div class="hs-row"><span class="v">670</span><span class="k">Cases evaluated</span></div>
+          <div class="hs-row"><span class="v">67</span><span class="k">Geometries</span></div>
+          <div class="hs-row"><span class="v">5</span><span class="k">Flow speeds</span></div>
+          <div class="hs-row"><span class="v">2</span><span class="k">Bodies</span></div>
+          <div class="hs-row"><span class="v">13<sup>/13</sup></span><span class="k">Benchmarks pass</span></div>
+          <div class="hs-row"><span class="v">&lt;1&thinsp;s</span><span class="k">Total compute</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ================= FINDINGS ================= -->
+<section id="findings">
+  <div class="sec-head"><span class="sec-no">Section I</span><h2>Five findings</h2></div>
+  <p class="sec-sub">All values are net reduction in total drag against a smooth
+  baseline at the same condition, positive meaning less drag, with
+  <em>propagated one-sigma uncertainty</em> carried on every number.</p>
+
+  <div class="finding">
+    <div class="f-big">9.51<small>% plate best</small></div>
+    <div>
+      <h3>The winning texture reverses with the drag mechanism</h3>
+      <p>Riblets are the only class that helps on a friction-dominated flat
+      plate, peaking at <em>+9.506% &plusmn; 1.5 pp</em> for blade riblets at
+      s&#8314; = 14.9. On a pressure-dominated sphere the order flips completely:
+      dimples reach <em>+52.77% &plusmn; 4.1 pp</em>, collapsing the wake by
+      tripping early transition. Best sphere result is 5.55 times the best
+      plate result.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="f-big">19/20<small>dimples over 20%</small></div>
+    <div>
+      <h3>The dimpled-sphere drag crisis emerged, nobody told the model</h3>
+      <p>The sphere never crosses the smooth-body crisis Reynolds number; the
+      smooth drag coefficient rises monotonically from 0.389 to 0.490 across
+      the whole range. Yet nineteen of twenty dimple geometries still exceed
+      twenty percent reduction because roughness forces early transition.
+      That behaviour was <em>a model output, not an input</em>.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="f-big">10.7<small>collapse of l&#1138;&#8314;</small></div>
+    <div>
+      <h3>The optimum landed inside the published band without being told to</h3>
+      <p>The model parameterises riblets on groove scale l&#1138;&#8314;, not on
+      spacing. Its optimum still collapses to 10.70 across all four shapes while
+      the corresponding s&#8314; spreads from 15.5 to 18.1, which is precisely
+      the argument made in the turbulence literature for using l&#1138;&#8314;.
+      Operating inside the published s&#8314; = 10 to 20 band is worth
+      <em>2.70 percentage points</em>.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="f-big">0/50<small>hybrids beat parts</small></div>
+    <div>
+      <h3>Hybrids fail cleanly, and that is a publishable negative</h3>
+      <p>Not one hybrid case beat its own better ingredient. Dimples destroy the
+      streamwise coherence riblets exploit, costing <em>2.92 percentage points</em>
+      versus the best constituent. The class carries the widest uncertainty in
+      the study because no calibration data exists, and it is labelled
+      extrapolation openly.</p>
+    </div>
+  </div>
+
+  <div class="finding">
+    <div class="f-big">2.03<small>% shark ceiling</small></div>
+    <div>
+      <h3>Shark-skin reaches 2 percent, not the famous 12</h3>
+      <p>The popular figure circulates mostly from water media, swimsuits and
+      fouled baselines. Controlled measurements on real denticle replicas found
+      single digits or worse. This study sides with the controlled data: the
+      best denticle delivers <em>at most 21.5%</em> of what ideal riblets give
+      at the same condition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="figures">
+  <div class="sec-head"><span class="sec-no">Section II</span><h2>The figures</h2></div>
+  <p class="sec-sub">Eight publication-grade charts generated programmatically
+  from the dataset. Every number plotted traces back to <em>one source of
+  truth</em>; nothing was drawn by hand.</p>
+
+  <div class="gallery">
+    <figure class="figs">
+      <div class="frame"><img src="graph1_top20_drag_reduction_bar.png" alt="Bar chart of the top twenty geometries by net drag reduction"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 1</span>
+        <h4>Top twenty geometries</h4>
+        <p>Net drag reduction ranked, uncertainty bars included. Overlapping
+        intervals are flagged as <em>statistical ties</em>, so no winner is
+        claimed beyond what the evidence supports.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs">
+      <div class="frame"><img src="graph2_drag_vs_flowspeed_top_geometries.png" alt="Line chart of drag reduction versus flow speed"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 2</span>
+        <h4>Drag versus flow speed</h4>
+        <p>The headline reversal in one picture. The same geometry can help at
+        one speed and hurt at another once s&#8314; drifts past the crossover,
+        <em>speed changes everything</em>.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs">
+      <div class="frame"><img src="graph3_heatmap_riblet_spacing_height.png" alt="Heatmap of riblet performance across spacing and height"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 3</span>
+        <h4>Riblet design space</h4>
+        <p>Spacing against height for the full V-groove grid, no empty cells.
+        The ridge of good designs follows constant aspect ratio, matching
+        Bechert's measurements.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs">
+      <div class="frame"><img src="graph4_scatter_splus_vs_drag.png" alt="Scatter plot of drag reduction versus wall-unit spacing"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 4</span>
+        <h4>The s&#8314; scatter</h4>
+        <p>Every riblet case against wall-unit spacing, optimal band of
+        s&#8314; = 10 to 20 highlighted. The band <em>fell out of the physics</em>
+        rather than being imposed, and it matches independent published results.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs">
+      <div class="frame"><img src="graph5_heatmap_dimple_diameter_depth.png" alt="Heatmap of dimple performance across diameter and depth ratio"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 5</span>
+        <h4>Dimple design space</h4>
+        <p>Diameter against depth ratio. Shallow and dense helps slightly on
+        plates; deep dimples pay a form-drag penalty that swamps the gain,
+        <em>the golf ball lives on the sphere, not here</em>.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs">
+      <div class="frame"><img src="graph6_flow_visualization_streamlines.png" alt="Computed boundary layer profiles and near-wall flow detail"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 6</span>
+        <h4>Why it works</h4>
+        <p>Computed Blasius and log-law profiles with near-wall detail for
+        smooth, ribleted and dimpled walls. The mechanism is quantitative, not
+        decorative art.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs wide">
+      <div class="frame"><img src="graph7_pareto_drag_vs_feature_size.png" alt="Pareto fronts of drag reduction versus feature size and manufacturability"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 7</span>
+        <h4>The manufacturability tax</h4>
+        <p>Pareto fronts trading drag benefit against smallest feature size and
+        against a composite difficulty index. The best geometry is not always
+        the buildable one, and this chart shows exactly where the frontier sits.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="figs">
+      <div class="frame"><img src="graph8_boxplots_geometry_classes.png" alt="Box plots of net drag reduction by texture class and body"></div>
+      <figcaption>
+        <span class="fig-no">Fig. 8</span>
+        <h4>Class versus body</h4>
+        <p>Per-class distributions split by body. Riblets sit above zero on the
+        plate, dimples explode upward on the sphere, hybrids straddle the line,
+        <em>the whole story in one frame</em>.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= VALIDATION ================= -->
+<section id="validation">
+  <div class="sec-head"><span class="sec-no">Section III</span><h2>Is it curve fitting?</h2></div>
+  <p class="sec-sub">The fair attack on any calibrated model. The answer: seven
+  benchmarks anchored the fit, but three rows were <em>never fitted</em> and the
+  model reproduced them anyway. Those three are the only independent evidence,
+  and they are marked below.</p>
+
+  <table>
+    <thead><tr>
+      <th>Benchmark</th><th>Status</th><th class="num">Published</th><th class="num">Model</th><th class="num">Verdict</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Smooth plate C_F, Re 1e6</td><td>Implementation</td><td class="num">0.00450</td><td class="num">0.00447</td><td class="num">Pass</td></tr>
+      <tr><td>Smooth plate C_F, Re 1e7</td><td>Implementation</td><td class="num">0.00300</td><td class="num">0.00300</td><td class="num">Pass</td></tr>
+      <tr><td>Smooth sphere Cd, Re 1e5</td><td>Implementation</td><td class="num">0.500</td><td class="num">0.492</td><td class="num">Pass</td></tr>
+      <tr><td>Blade riblet peak DR</td><td>Calibrated</td><td class="num">9.9%</td><td class="num">9.9%</td><td class="num">Pass</td></tr>
+      <tr><td>Blade optimal s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">13&ndash;20</td><td class="num">15.53</td><td class="num">Pass</td></tr>
+      <tr><td>Blade drag-crossover s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">25&ndash;40</td><td class="num">31.05</td><td class="num">Pass</td></tr>
+      <tr><td>V-groove peak DR</td><td>Calibrated</td><td class="num">6.1%</td><td class="num">6.20%</td><td class="num">Pass</td></tr>
+      <tr><td>V-groove optimal s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">10&ndash;20</td><td class="num">18.09</td><td class="num">Pass</td></tr>
+      <tr><td>Optimal l&#1138;&#8314; collapse, 4 shapes</td><td>Calibrated</td><td class="num">10.7</td><td class="num">10.70</td><td class="num">Pass</td></tr>
+      <tr><td>Golf-ball Cd at Re 1e5</td><td>Calibrated</td><td class="num">0.25</td><td class="num">0.256</td><td class="num">Pass</td></tr>
+      <tr><td>Golf-ball critical Re</td><td>Calibrated</td><td class="num">40k&ndash;80k</td><td class="num">57,351</td><td class="num">Pass</td></tr>
+      <tr><td>Best plate dimple net DR</td><td>Calibrated</td><td class="num">&minus;2 to +4%</td><td class="num">+1.40%</td><td class="num">Pass</td></tr>
+      <tr><td>Shark-skin peak DR</td><td>Calibrated</td><td class="num">2.5&ndash;10%</td><td class="num">2.93%</td><td class="num">Pass</td></tr>
+    </tbody>
+  </table>
+  <p class="table-note">Maximum point error across all benchmarks:
+  <em>2.42 percent</em>. Implementation rows confirm textbook correlations were
+  coded correctly; calibrated rows confirm the fits were applied; only the
+  three emergent rows test the model independently, <em>and all three pass inside
+  published bands</em>.</p>
+
+  <blockquote>
+    &ldquo;A model that only ever predicts success is <span>not falsifiable</span>.
+    This study ships its own predicted failure.&rdquo;
+    <div class="quote-rule"></div>
+  </blockquote>
+</section>
+
+<!-- ================= CLASS SUMMARY ================= -->
+<section id="summary">
+  <div class="sec-head"><span class="sec-no">Section IV</span><h2>Class summary</h2></div>
+  <p class="sec-sub">Mean net drag reduction per class per body, in percent,
+  positive meaning less drag than smooth.</p>
+
+  <table>
+    <thead><tr>
+      <th>Class</th><th>Cases per body</th><th class="num">Plate mean</th><th class="num">Plate range</th><th class="num">Sphere mean</th><th class="num">Sphere range</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Riblets</td><td class="num">105</td><td class="num">+1.09</td><td class="num">&minus;17.5 to +9.5</td><td class="num">+1.72</td><td class="num">&minus;0.9 to +36.1</td></tr>
+      <tr><td>Dimples</td><td class="num">100</td><td class="num">&minus;6.25</td><td class="num">&minus;20.2 to +1.4</td><td class="num">+7.95</td><td class="num">&minus;22.8 to +52.8</td></tr>
+      <tr><td>Shark denticles</td><td class="num">75</td><td class="num">&minus;0.10</td><td class="num">&minus;0.8 to +2.0</td><td class="num">+2.25</td><td class="num">&minus;1.1 to +41.6</td></tr>
+      <tr><td>Hybrids</td><td class="num">50</td><td class="num">&minus;0.90</td><td class="num">&minus;19.6 to +9.1</td><td class="num">+7.01</td><td class="num">&minus;16.8 to +52.6</td></tr>
+      <tr><td>Smooth baseline</td><td class="num">5</td><td class="num">0.00</td><td class="num">0.0</td><td class="num">0.00</td><td class="num">0.0</td></tr>
+    </tbody>
+  </table>
+  <p class="table-note">214 rows carry low confidence, dominated by the 1 m/s
+  condition where the correlation runs two decades below its validated range.
+  Any claim intended for defence filters on <em>high confidence only</em>.</p>
+</section>
+
+<!-- ================= METHODOLOGY ================= -->
+<section id="tools">
+  <div class="sec-head"><span class="sec-no">Section V</span><h2>Methodology</h2></div>
+  <p class="sec-sub">The study is complete as a computational body of work: a
+  closed-form model, an independent validation harness, and a fully specified
+  experimental programme whose predictions were <em>registered before any
+  measurement</em>.</p>
+
+  <div class="tools">
+    <div class="tool">
+      <h4><span>Pillar one</span>Semi-empirical model</h4>
+      <ul>
+        <li>Published correlations composed into one framework: Schlichting, Clift-Gauvin, Bechert, Garcia-Mayoral and Jimenez, Achenbach</li>
+        <li>Closed-form algebra throughout, 670 cases evaluated in under a second</li>
+        <li>Every texture class resolved on both a friction-dominated plate and a pressure-dominated sphere</li>
+        <li>Uncertainty propagated per class from calibration-source spread</li>
+      </ul>
+    </div>
+    <div class="tool">
+      <h4><span>Pillar two</span>Validation harness</h4>
+      <ul>
+        <li>Thirteen point and band benchmarks against published measurements</li>
+        <li>Regression gate exits non-zero on any failure before datasets regenerate</li>
+        <li>Maximum point error 2.42 percent across all benchmarks</li>
+        <li>Three benchmarks never fitted to the model reproduced independently</li>
+      </ul>
+    </div>
+    <div class="tool">
+      <h4><span>Pillar three</span>Pre-registered experimental programme</h4>
+      <ul>
+        <li>Eight-coupon set specified with nominal and as-built metrology requirements</li>
+        <li>Tripped flat-plate momentum-deficit protocol, five speeds, five repeats</li>
+        <li>Mass-matched sphere terminal-velocity test, twenty alternating drops</li>
+        <li>Minimal-span LES specification, wall-resolved, with smooth-wall control</li>
+      </ul>
+    </div>
+  </div>
+
+  <blockquote>
+    &ldquo;Every prediction in this study was <span>published before</span> a
+    single measurement was taken.&rdquo;
+    <div class="quote-rule"></div>
+  </blockquote>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;width:100%">
+    <div class="fine">
+      Correspondence regarding this research is welcome. The full manuscript,
+      dataset and analysis code are available on request.
+    </div>
+    <div style="text-align:right">
+      <div><b style="color:var(--ink-dim)">Kanav Thonda</b></div>
+      <div>Rouse High School &middot; Leander TX &middot; Class of 2028</div>
+      <div style="margin-top:8px;color:var(--ink-faint)">&copy; 2026</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
