@@ -1,0 +1,14 @@
+benchmark,source,kind,status,published,predicted,units,error_pct,passed
+Smooth plate C_F at Re_L=1e6,"Schlichting, Boundary-Layer Theory",POINT,IMPLEMENTATION,0.0045,0.00447,-,-0.65,True
+Smooth plate C_F at Re_L=1e7,"Schlichting, Boundary-Layer Theory",POINT,IMPLEMENTATION,0.003,0.003,-,0.12,True
+Smooth sphere Cd at Re_D=1e5,Clift & Gauvin; Achenbach 1972,POINT,IMPLEMENTATION,0.5,0.49175,-,-1.65,True
+Blade riblet peak DR,Bechert et al. 1997 (JFM 338:59),POINT,CALIBRATED,9.9,9.89998,%,-0.0,True
+Blade riblet optimal s+,Bechert et al. 1997; Walsh 1983,BAND,EMERGENT,13 to 20,15.52572,-,,True
+Blade riblet DR->0 crossing s+,Bechert 1997: drag rise beyond s+ ~ 30,BAND,EMERGENT,25 to 40,31.05138,-,,True
+V-groove peak DR,Bechert et al. 1997 trapezoidal ~6.1%,POINT,CALIBRATED,6.1,6.19987,%,1.64,True
+V-groove optimal s+,Garcia-Mayoral & Jimenez 2011: viscous regime s+ 10-20,BAND,EMERGENT,10 to 20,18.09094,-,,True
+Optimal l_g+ collapse across 4 shapes,Garcia-Mayoral & Jimenez 2011 (l_g+ ~ 10.7),POINT,CALIBRATED,10.7,10.70098,-,0.01,True
+Golf ball Cd at Re_D=1e5,Bearman & Harvey 1976; Achenbach 1974,POINT,CALIBRATED,0.25,0.25606,-,2.42,True
+Golf ball critical Re_D,Bearman & Harvey 1976; Achenbach 1974,BAND,CALIBRATED,40000 to 80000,57351.33719,-,,True
+Best plate dimple net DR,van Campenhout 2023 (-2%) to van Nesselrooij 2016 (+4%),BAND,CALIBRATED,-2 to 4,1.39505,%,,True
+Shark-skin peak DR,Bechert et al. 2000 replicas ~3%; Dean & Bhushan 2010 up to 10%,BAND,CALIBRATED,2.5 to 10,2.93308,%,,True
