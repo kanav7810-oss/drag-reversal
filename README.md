@@ -102,6 +102,19 @@ condition and the hybrid class) should be filtered before quoting results.
 The pre-registered experimental programme is specified in `fabrication/`,
 `wind_tunnel/` and `cfd/`.
 
+## License and terms
+
+Code, dataset and analysis outputs are released under the MIT License (see
+[LICENSE](LICENSE)). Text and figures may be quoted for non-commercial
+educational purposes with attribution to the author and a link to this
+repository.
+
+The research results are reduced-order model estimates calibrated to
+published literature. They are provided for educational purposes, without
+warranty of any kind, and are not engineering advice; do not apply any value
+here to real aircraft, vehicles, or equipment without review by qualified
+professionals.
+
 ## Author
 
 Kanav Thonda, Rouse High School, Leander TX (Class of 2028).
