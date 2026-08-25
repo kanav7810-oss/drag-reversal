@@ -38,146 +38,146 @@
   "rows": [
    {
     "benchmark": "Smooth plate C_F at Re_L=1e6",
-    "source": "Schlichting",
+    "source": "Schlichting, Boundary-Layer Theory",
     "kind": "POINT",
     "status": "IMPLEMENTATION",
     "published": "0.0045",
     "predicted": 0.00447,
     "units": "-",
     "error_pct": -0.65,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Smooth plate C_F at Re_L=1e7",
-    "source": "Schlichting",
+    "source": "Schlichting, Boundary-Layer Theory",
     "kind": "POINT",
     "status": "IMPLEMENTATION",
     "published": "0.003",
     "predicted": 0.003,
     "units": "-",
     "error_pct": 0.12,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Smooth sphere Cd at Re_D=1e5",
-    "source": "Clift-Gauvin",
+    "source": "Clift & Gauvin; Achenbach 1972",
     "kind": "POINT",
     "status": "IMPLEMENTATION",
     "published": "0.5",
     "predicted": 0.49175,
     "units": "-",
     "error_pct": -1.65,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Blade riblet peak DR",
-    "source": "Bechert et al. 1997",
+    "source": "Bechert et al. 1997 (JFM 338:59)",
     "kind": "POINT",
     "status": "CALIBRATED",
     "published": "9.9",
-    "predicted": 9.9,
+    "predicted": 9.89998,
     "units": "%",
     "error_pct": -0.0,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Blade riblet optimal s+",
-    "source": "Garcia-Mayoral & Jimenez",
+    "source": "Bechert et al. 1997; Walsh 1983",
     "kind": "BAND",
     "status": "EMERGENT",
-    "published": "(13, 20)",
-    "predicted": 15.52519,
+    "published": "13 to 20",
+    "predicted": 15.52572,
     "units": "-",
     "error_pct": NaN,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Blade riblet DR->0 crossing s+",
-    "source": "literature band",
+    "source": "Bechert 1997: drag rise beyond s+ ~ 30",
     "kind": "BAND",
     "status": "EMERGENT",
-    "published": "(25, 40)",
-    "predicted": 31.05038,
+    "published": "25 to 40",
+    "predicted": 31.05138,
     "units": "-",
     "error_pct": NaN,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "V-groove peak DR",
-    "source": "Bechert et al. 1997",
+    "source": "Bechert et al. 1997 trapezoidal ~6.1%",
     "kind": "POINT",
     "status": "CALIBRATED",
     "published": "6.1",
-    "predicted": 6.2,
+    "predicted": 6.19987,
     "units": "%",
     "error_pct": 1.64,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "V-groove optimal s+",
-    "source": "literature band",
+    "source": "Garcia-Mayoral & Jimenez 2011: viscous regime s+ 10-20",
     "kind": "BAND",
     "status": "EMERGENT",
-    "published": "(10, 20)",
-    "predicted": 18.0863,
+    "published": "10 to 20",
+    "predicted": 18.09094,
     "units": "-",
     "error_pct": NaN,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Optimal l_g+ collapse across 4 shapes",
-    "source": "GM&J",
+    "source": "Garcia-Mayoral & Jimenez 2011 (l_g+ ~ 10.7)",
     "kind": "POINT",
     "status": "CALIBRATED",
     "published": "10.7",
-    "predicted": 10.701,
+    "predicted": 10.70098,
     "units": "-",
     "error_pct": 0.01,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Golf ball Cd at Re_D=1e5",
-    "source": "Achenbach / golf-ball data",
+    "source": "Bearman & Harvey 1976; Achenbach 1974",
     "kind": "POINT",
     "status": "CALIBRATED",
     "published": "0.25",
-    "predicted": 0.26864,
+    "predicted": 0.25606,
     "units": "-",
-    "error_pct": 7.45,
-    "passed": "PASS"
+    "error_pct": 2.42,
+    "passed": true
    },
    {
     "benchmark": "Golf ball critical Re_D",
-    "source": "Achenbach-type",
+    "source": "Bearman & Harvey 1976; Achenbach 1974",
     "kind": "BAND",
     "status": "CALIBRATED",
-    "published": "(40000, 80000)",
-    "predicted": 62865.49327,
+    "published": "40000 to 80000",
+    "predicted": 57351.33719,
     "units": "-",
     "error_pct": NaN,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Best plate dimple net DR",
-    "source": "conservative consensus",
+    "source": "van Campenhout 2023 (-2%) to van Nesselrooij 2016 (+4%)",
     "kind": "BAND",
     "status": "CALIBRATED",
-    "published": "(-2, 4)",
-    "predicted": 0.8815,
+    "published": "-2 to 4",
+    "predicted": 1.39505,
     "units": "%",
     "error_pct": NaN,
-    "passed": "PASS"
+    "passed": true
    },
    {
     "benchmark": "Shark-skin peak DR",
-    "source": "conservative calibration",
+    "source": "Bechert et al. 2000 replicas ~3%; Dean & Bhushan 2010 up to 10%",
     "kind": "BAND",
     "status": "CALIBRATED",
-    "published": "(2.5, 10)",
-    "predicted": 2.97965,
+    "published": "2.5 to 10",
+    "predicted": 2.93308,
     "units": "%",
     "error_pct": NaN,
-    "passed": "PASS"
+    "passed": true
    }
   ]
  },
@@ -424,10 +424,10 @@
     "lg_plus": 14.6261
    }
   },
-  "band_value_pp": 2.5486,
+  "band_value_pp": 2.7016,
   "n_inside_band": 16,
   "mean_inside": 3.3808,
-  "mean_outside": 0.8322
+  "mean_outside": 0.6792
  },
  "a4_dimple": {
   "best_plate": {

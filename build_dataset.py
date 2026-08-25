@@ -140,9 +140,19 @@ def evaluate_row(g, body, u_inf):
     elif cls == "dimple":
         dr_fric = float(tm.dimple_friction_only(g["r"], g["d"], cov, g["pat"], ut))
     elif cls == "shark":
-        dr_fric = float(tm.shark_fr([g["sc"]], [g["ov"]], [_aspect_of(g["gid"])], ut)[0])
+        dr_fric = float(tm.shark_fr([g["sc"]], [g["ov"]],
+                                    [_aspect_of(g["gid"])], ut)[0])
+        s_eq = g["sc"] / 3.0
+        h_eq = 0.15 * g["sc"]
+        sp_plus = float(s_eq * 1e-6 * ut / tm.NU)
+        lg_plus = float(np.sqrt(0.60 * (s_eq * 1e-6) * (h_eq * 1e-6))
+                        * ut / tm.NU)
     elif cls == "hybrid":
-        r_rib = float(tm.riblet_fr([g["rib_shape"]], [g["s"]], [g["h"]], [ut])[0][0])
+        r_rib, sp_plus, lg_plus = tm.riblet_fr([g["rib_shape"]], [g["s"]],
+                                               [g["h"]], [ut])
+        r_rib = float(r_rib[0])
+        sp_plus = float(sp_plus[0])
+        lg_plus = float(lg_plus[0])
         d_fric = float(tm.dimple_friction_only(g["r"], g["d"], cov, g["pat"], ut))
         dr_fric = float(tm.hybrid_fr(r_rib, d_fric, cov))
     else:

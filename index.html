@@ -287,7 +287,7 @@
   }
   .tool li:last-child{border-bottom:none}
   .tool li::before{
-    content:'\2013';
+    content:'-';
     position:absolute;
     left:0;
     color:var(--gold-dim);
@@ -338,6 +338,7 @@
 
   /* ---------- lightbox ---------- */
   .frame img{cursor:zoom-in}
+  .frame img:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
   .lightbox{
     position:fixed;inset:0;z-index:100;
     display:none;align-items:center;justify-content:center;
@@ -453,13 +454,13 @@
   </div>
 
   <div class="finding">
-    <div class="f-big">10.7<small>collapse of l&#1138;&#8314;</small></div>
+    <div class="f-big">10.7<small>collapse of l<sub>g</sub><sup>+</sup></small></div>
     <div>
       <h3>The optimum landed inside the published band without being told to</h3>
-      <p>The model parameterises riblets on groove scale l&#1138;&#8314;, not on
+      <p>The model parameterises riblets on groove scale l<sub>g</sub><sup>+</sup>, not on
       spacing. Its optimum still collapses to 10.70 across all four shapes while
       the corresponding s&#8314; spreads from 15.5 to 18.1, which is precisely
-      the argument made in the turbulence literature for using l&#1138;&#8314;.
+      the argument made in the turbulence literature for using l<sub>g</sub><sup>+</sup>.
       Operating inside the published s&#8314; = 10 to 20 band is worth
       <em>2.70 percentage points</em>.</p>
     </div>
@@ -605,15 +606,15 @@
       <tr><td>Smooth plate C_F, Re 1e7</td><td>Implementation</td><td class="num">0.00300</td><td class="num">0.00300</td><td class="num">Pass</td></tr>
       <tr><td>Smooth sphere Cd, Re 1e5</td><td>Implementation</td><td class="num">0.500</td><td class="num">0.492</td><td class="num">Pass</td></tr>
       <tr><td>Blade riblet peak DR</td><td>Calibrated</td><td class="num">9.9%</td><td class="num">9.9%</td><td class="num">Pass</td></tr>
-      <tr><td>Blade optimal s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">13&ndash;20</td><td class="num">15.53</td><td class="num">Pass</td></tr>
-      <tr><td>Blade drag-crossover s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">25&ndash;40</td><td class="num">31.05</td><td class="num">Pass</td></tr>
+      <tr><td>Blade optimal s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">13-20</td><td class="num">15.53</td><td class="num">Pass</td></tr>
+      <tr><td>Blade drag-crossover s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">25-40</td><td class="num">31.05</td><td class="num">Pass</td></tr>
       <tr><td>V-groove peak DR</td><td>Calibrated</td><td class="num">6.1%</td><td class="num">6.20%</td><td class="num">Pass</td></tr>
-      <tr><td>V-groove optimal s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">10&ndash;20</td><td class="num">18.09</td><td class="num">Pass</td></tr>
-      <tr><td>Optimal l&#1138;&#8314; collapse, 4 shapes</td><td>Calibrated</td><td class="num">10.7</td><td class="num">10.70</td><td class="num">Pass</td></tr>
+      <tr><td>V-groove optimal s&#8314;</td><td><span class="em-tag">Emergent</span></td><td class="num">10-20</td><td class="num">18.09</td><td class="num">Pass</td></tr>
+      <tr><td>Optimal l<sub>g</sub><sup>+</sup> collapse, 4 shapes</td><td>Calibrated</td><td class="num">10.7</td><td class="num">10.70</td><td class="num">Pass</td></tr>
       <tr><td>Golf-ball Cd at Re 1e5</td><td>Calibrated</td><td class="num">0.25</td><td class="num">0.256</td><td class="num">Pass</td></tr>
-      <tr><td>Golf-ball critical Re</td><td>Calibrated</td><td class="num">40k&ndash;80k</td><td class="num">57,351</td><td class="num">Pass</td></tr>
+      <tr><td>Golf-ball critical Re</td><td>Calibrated</td><td class="num">40k-80k</td><td class="num">57,351</td><td class="num">Pass</td></tr>
       <tr><td>Best plate dimple net DR</td><td>Calibrated</td><td class="num">&minus;2 to +4%</td><td class="num">+1.40%</td><td class="num">Pass</td></tr>
-      <tr><td>Shark-skin peak DR</td><td>Calibrated</td><td class="num">2.5&ndash;10%</td><td class="num">2.93%</td><td class="num">Pass</td></tr>
+      <tr><td>Shark-skin peak DR</td><td>Calibrated</td><td class="num">2.5-10%</td><td class="num">2.93%</td><td class="num">Pass</td></tr>
     </tbody>
   </table>
   <p class="table-note">Maximum point error across all benchmarks:
@@ -681,7 +682,7 @@
   <em>A-BLAD-s200-h100</em> at 20 m/s, reaches +9.51 &plusmn; 1.5 percent, and
   on a friction-dominated body that is the number to beat. Cases whose
   uncertainty intervals overlap are <em>statistical ties</em>, so ranks 1
-  through 9 should be read as one leading group rather than ten separate
+  through 10 should be read as one leading group rather than ten separate
   winners.</p>
 </section>
 
@@ -697,7 +698,7 @@
     <div class="tool">
       <h4><span>Pillar one</span>Semi-empirical model</h4>
       <ul>
-        <li>Published correlations composed into one framework: Schlichting, Clift-Gauvin, Bechert, Garcia-Mayoral and Jimenez, Achenbach</li>
+        <li>Published correlations composed into one framework: Schlichting, Clift-Gauvin, Bechert, Garcia-Mayoral and Jimenez, and Achenbach</li>
         <li>Closed-form algebra throughout, 670 cases evaluated in under a second</li>
         <li>Every texture class resolved on both a friction-dominated plate and a pressure-dominated sphere</li>
         <li>Uncertainty propagated per class from calibration-source spread</li>
@@ -823,7 +824,12 @@
     setTimeout(function(){ img.src=''; }, 250);
   }
   document.querySelectorAll('.frame img').forEach(function(el){
+    el.setAttribute('tabindex','0');
+    el.setAttribute('role','button');
     el.addEventListener('click', function(){ open(el.src, el.alt); });
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(el.src, el.alt); }
+    });
   });
   document.getElementById('lightboxClose').addEventListener('click', close);
   lb.addEventListener('click', function(e){ if(e.target === lb) close(); });

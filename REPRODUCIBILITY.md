@@ -29,3 +29,14 @@ Zenodo archives a GitHub release and mints a citable DOI free:
 must pass 13/13 and reproduce dataset parity before any release is tagged. If
 you change the physics, any benchmark that breaks is either a bug or a
 deliberate recalibration that must be documented in the paper's Limitations.
+
+## Validation provenance
+
+The validation section of `results_summary.json` serialises
+`validation_benchmarks.csv`, the authoritative record of the original study's
+benchmark outputs. `validate_model.py` re-derives every benchmark live as a
+regression gate: the golf-ball anchors reproduce the record exactly (0.25606
+and 57351.34), while the best-dimple and shark-peak sweeps land at 1.38979 and
+2.97965 against the recorded 1.39505 and 2.93308 - the original sweep grids did
+not survive the loss of the source notebooks, and both live values sit inside
+their published bands, so the gate holds at 13/13 either way.

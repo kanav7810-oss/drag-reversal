@@ -241,7 +241,7 @@ L 0 2
      </g>
     </g>
     <g id="text_4">
-     <text style="font-size: 10px; font-family: 'Liberation Sans', 'Arimo', 'DejaVu Sans'; text-anchor: middle" x="215.68892" y="367.40875" transform="rotate(-0 215.68892 367.40875)">Minimum feature size (µm)  —  smaller is harder to make</text>
+     <text style="font-size: 10px; font-family: 'Liberation Sans', 'Arimo', 'DejaVu Sans'; text-anchor: middle" x="215.68892" y="367.40875" transform="rotate(-0 215.68892 367.40875)">Minimum feature size (µm), smaller is harder to make</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -699,7 +699,7 @@ L 787.694296 7.2
      </g>
     </g>
     <g id="text_28">
-     <text style="font-size: 10px; font-family: 'Liberation Sans', 'Arimo', 'DejaVu Sans'; text-anchor: middle" x="626.57983" y="367.40875" transform="rotate(-0 626.57983 367.40875)">Composite manufacturability index  —  higher is harder</text>
+     <text style="font-size: 10px; font-family: 'Liberation Sans', 'Arimo', 'DejaVu Sans'; text-anchor: middle" x="626.57983" y="367.40875" transform="rotate(-0 626.57983 367.40875)">Composite manufacturability index, higher is harder</text>
     </g>
    </g>
    <g id="matplotlib.axis_4">

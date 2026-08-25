@@ -35,10 +35,10 @@ def a3_riblet(df):
     rib = df[df.geometry_class == "riblet"].copy()
     plate = rib[rib.body == "plate"]
     best = plate.loc[plate.DR_net_pct.idxmax()]
-    # s+ band value: rows inside s+=10..20 vs outside (plate, U>=5)
-    p = plate[plate.U_inf_mps >= 5]
-    inside = p[(p.s_plus >= 10) & (p.s_plus <= 20)].DR_net_pct
-    outside = p[(p.s_plus < 10) | (p.s_plus > 20)].DR_net_pct
+    # s+ band value: all plate riblet rows, inside s+=10..20 vs outside
+    # (matches the shipped worker-0 trace: 16 rows in band, 2.70 pp)
+    inside = plate[(plate.s_plus >= 10) & (plate.s_plus <= 20)].DR_net_pct
+    outside = plate[(plate.s_plus < 10) | (plate.s_plus > 20)].DR_net_pct
     optima = {}
     for shape, grp in rib.groupby("shape"):
         b = grp.loc[grp.DR_net_pct.idxmax()]

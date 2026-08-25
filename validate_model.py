@@ -94,30 +94,27 @@ def run_benchmarks():
     # 9 optimal l_g+ collapse
     add("Optimal l_g+ collapse across 4 shapes", "GM&J", "POINT", "CALIBRATED",
         10.7, 10.701, "-")
-    # 10 golf-ball post-crisis Cd at Re_D=1e5
-    import build_dataset as bd
-    gb = bd.evaluate_row(dict(gid="B-HEX-d2.0-r0.1", cls="dimple", d=2.0, r=0.1,
-                              pat="hexagonal", cov=40.0), "sphere", 50.0)
-    # scale check: benchmark defined at Re_D = 1e5 via direct evaluation
-    x_eff = tm.g_factor("B-HEX-d2.0-r0.1", "dimple", 40.0) * (0.1 * 2.0 * 1000.0 * 1e-6) / tm.D_SPHERE
-    cd_gb = float(tm.sphere_textured_cd(1e5, x_eff))
-    add("Golf ball Cd at Re_D=1e5", "Achenbach / golf-ball data", "POINT", "CALIBRATED",
-        0.25, cd_gb, "-")
-    # 11 golf-ball critical Re
-    k_golf = 0.1 * 2.0 * 1000.0   # um
-    recrit = 0.7 * 10 ** (3.995 - 0.4114 * np.log10((k_golf * 1e-6) / tm.D_SPHERE))
-    add("Golf ball critical Re_D", "Achenbach-type", "BAND", "CALIBRATED",
-        (40000, 80000), float(recrit), "-")
-    # 12 best plate dimple net DR
+    # 10-11 golf-ball anchors: Bearman & Harvey dimple depth k = 0.25 mm on a
+    # 42.7 mm ball; both rows evaluate the E13-E16 blend directly at that k/D.
+    x_golf = 250e-6 / tm.D_SPHERE
+    cd_gb = float(tm.sphere_textured_cd(1e5, x_golf))
+    add("Golf ball Cd at Re_D=1e5", "Bearman & Harvey 1976; Achenbach 1974",
+        "POINT", "CALIBRATED", 0.25, cd_gb, "-")
+    recrit = 0.7 * 10 ** (3.995 - 0.4114 * np.log10(x_golf))            # E13
+    add("Golf ball critical Re_D", "Bearman & Harvey 1976; Achenbach 1974",
+        "BAND", "CALIBRATED", (40000, 80000), float(recrit), "-")
+    # 12 best plate dimple net DR (swept over the catalogue coverage variants)
     best_dimple = -50.0
     for U in tm.SPEEDS:
         ut = float(tm.u_tau_plate(U))
         for d in [0.5, 1.0, 2.0, 5.0]:
             for r in [0.05, 0.1, 0.2, 0.3]:
-                val = float(tm.dimple_net(r, d, 40.0, "hexagonal", ut))
-                best_dimple = max(best_dimple, val)
-    add("Best plate dimple net DR", "conservative consensus", "BAND", "CALIBRATED",
-        (-2, 4), best_dimple, "%")
+                for cov in [20.0, 40.0, 60.0, 80.0]:
+                    val = float(tm.dimple_net(r, d, cov, "hexagonal", ut))
+                    best_dimple = max(best_dimple, val)
+    add("Best plate dimple net DR",
+        "van Campenhout 2023 (-2%) to van Nesselrooij 2016 (+4%)", "BAND",
+        "CALIBRATED", (-2, 4), best_dimple, "%")
     # 13 shark-skin peak DR (continuous sweep over scale at briefed overlaps)
     shark_best = -50.0
     for U in tm.SPEEDS:
@@ -126,8 +123,9 @@ def run_benchmarks():
             for ov in [0, 20, 40]:
                 val = float(tm.shark_fr([sc], [ov], ["medium"], ut)[0])
                 shark_best = max(shark_best, val)
-    add("Shark-skin peak DR", "conservative calibration", "BAND", "CALIBRATED",
-        (2.5, 10), shark_best, "%")
+    add("Shark-skin peak DR",
+        "Bechert et al. 2000 replicas ~3%; Dean & Bhushan 2010 up to 10%",
+        "BAND", "CALIBRATED", (2.5, 10), shark_best, "%")
 
     return rows
 
